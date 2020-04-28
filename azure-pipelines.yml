@@ -5,7 +5,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  tag: 'aspnet:5.0'
+  tag: 'aspnet:latest'
 
 steps:
 - task: Docker@2
