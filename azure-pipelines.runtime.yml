@@ -2,6 +2,9 @@ trigger:
   branches:
     include:
       - master
+  files:
+    include:
+      - azure-pipelines.runtime.yml
 
 pool:
   vmImage: "ubuntu-latest"
@@ -18,7 +21,7 @@ steps:
     inputs:
       targetType: "inline"
       script: |
-        $env:aspnet="$(tag)"
+        $env:tag="$(tag)"
         docker pull mcr.microsoft.com/dotnet/core/$env:tag
         docker tag mcr.microsoft.com/dotnet/core/$env:tag ccr.ccs.tencentyun.com/ye4241/$env:tag
         docker push ccr.ccs.tencentyun.com/ye4241/$env:tag
