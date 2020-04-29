@@ -10,7 +10,7 @@ pool:
   vmImage: "ubuntu-latest"
 
 variables:
-  tag: "sdk:latest"
+  tag: "sdk:3.1"
 
 steps:
   - task: Docker@2
