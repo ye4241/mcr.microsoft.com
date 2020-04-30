@@ -21,7 +21,8 @@ steps:
     inputs:
       targetType: "inline"
       script: |
-        $env:tag="$(tag)"
-        docker pull mcr.microsoft.com/$env:tag
-        docker tag mcr.microsoft.com/$env:tag ccr.ccs.tencentyun.com/ye4241/$env:tag
-        docker push ccr.ccs.tencentyun.com/ye4241/$env:tag
+        $source = "$(tag)"
+        $target = "$(tag)" -replace "/","."
+        docker pull "mcr.microsoft.com/$(source)"
+        docker tag "mcr.microsoft.com/$(source)" "ccr.ccs.tencentyun.com/ye4241/$(target)"
+        docker push "ccr.ccs.tencentyun.com/ye4241/$(target)"
