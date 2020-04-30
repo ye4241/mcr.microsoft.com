@@ -7,7 +7,7 @@ trigger:
       - dotnet/core/aspnet.yml
 
 pool:
-  vmImage: "ubuntu-latest"
+  name: "default"
 
 variables:
   tag: "dotnet/core/aspnet:latest"
