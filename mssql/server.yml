@@ -7,7 +7,7 @@ trigger:
       - mssql/server.yml
 
 pool:
-  name: "default"
+  vmImage: "ubuntu-latest"
 
 variables:
   tag: "mssql/server:2017-latest"

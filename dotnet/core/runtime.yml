@@ -7,7 +7,7 @@ trigger:
       - dotnet/core/runtime.yml
 
 pool:
-  name: "default"
+  vmImage: "ubuntu-latest"
 
 variables:
   tag: "dotnet/core/runtime:latest"
