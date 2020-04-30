@@ -18,6 +18,7 @@ steps:
       containerRegistry: "tencentyun"
       command: "login"
   - task: PowerShell@2
+    timeoutInMinutes: 360
     inputs:
       targetType: "inline"
       script: |
