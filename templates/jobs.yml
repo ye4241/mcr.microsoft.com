@@ -5,6 +5,8 @@ parameters:
 jobs:
 - ${{each tag in parameters.tags}}:
   - job: ${{tag}}
+    pool:
+      vmImage: "ubuntu-latest"
     timeoutInMinutes: 360
     steps:
       - task: Docker@2
