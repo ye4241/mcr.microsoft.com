@@ -5,11 +5,11 @@ jobs:
     parameters:
       path: "mssql/server"
       tags:
-        - key: "2017_latest"
+        - key: "2017"
           value: "2017-latest"
-        - key: "2019_latest"
+        - key: "2019"
           value: "2019-latest"
-        - key: "2017_cu20_ubuntu_16_04"
+        - key: "2017_cu20"
           value: "2017-CU20-ubuntu-16.04"
-        - key: "2019_cu4_ubuntu_16_04"
+        - key: "2019_cu4"
           value: "2019-CU4-ubuntu-16.04"
