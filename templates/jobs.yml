@@ -4,20 +4,20 @@ parameters:
 
 jobs:
 - ${{each tag in parameters.tags}}:
-  job: ${{tag}}
-  timeoutInMinutes: 360
-  steps:
-    - task: Docker@2
-      inputs:
-        containerRegistry: "tencentyun"
-        command: "login"
-    - task: PowerShell@2
-      inputs:
-        targetType: "inline"
-        script: |
-          $full = ${{parameters.path}} + ":" + ${{tag}}
-          $source = "mcr.microsoft.com/$full" 
-          $target = "ccr.ccs.tencentyun.com/ye4241/" + ("$full" -replace "/",".")
-          docker pull $source
-          docker tag $source $target
-          docker push $target
+  - job: ${{tag}}
+    timeoutInMinutes: 360
+    steps:
+      - task: Docker@2
+        inputs:
+          containerRegistry: "tencentyun"
+          command: "login"
+      - task: PowerShell@2
+        inputs:
+          targetType: "inline"
+          script: |
+            $full = ${{parameters.path}} + ":" + ${{tag}}
+            $source = "mcr.microsoft.com/$full" 
+            $target = "ccr.ccs.tencentyun.com/ye4241/" + ("$full" -replace "/",".")
+            docker pull $source
+            docker tag $source $target
+            docker push $target
