@@ -7,9 +7,9 @@ jobs:
       tags:
         - key: "latest"
           value: "latest"
-        - key: "3"
+        - key: "3_1"
           value: "3.1"
-        - key: "2"
+        - key: "2_1"
           value: "2.1"
-        - key: "5"
+        - key: "5_0"
           value: "5.0"
