@@ -1,8 +1,6 @@
 parameters:
-  - name: path
-    type: string
-  - name: tags
-    type: object
+  path: string
+  tags: []
 
 jobs:
   - ${{each tag in tags}}:

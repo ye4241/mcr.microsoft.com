@@ -8,10 +8,14 @@ trigger:
 
 variables:
   path: "dotnet/core/runtime"
-  tags: ""
+  tags: ["latest", "3.1", "2.1", "5.0"]
 
 jobs:
   - template: ../../templates/jobs.yml
     parameters:
       path: $(path)
-      tags: ["latest", "3.1", "2.1", "5.0"]
+      tags:
+        - "latest"
+        - "3.1"
+        - "2.1"
+        - "5.0"
