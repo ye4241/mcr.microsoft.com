@@ -1,5 +1,7 @@
 # mcr.microsoft.com
 
+https://dev.azure.com/ye4241/mcr.microsoft.com/_build?view=folders
+
 ## dotnet/core
 
 ### sdk
