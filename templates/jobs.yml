@@ -3,7 +3,7 @@ parameters:
   tags: []
 
 jobs:
-  - ${{each tag in tags}}:
+  - ${{each tag in parameters.tags}}:
     job: ${{tag}}
     timeoutInMinutes: 360
     steps:
@@ -15,7 +15,7 @@ jobs:
         inputs:
           targetType: "inline"
           script: |
-            $full = ${{path}} + ":" + ${{tag}}
+            $full = ${{parameters.path}} + ":" + ${{tag}}
             $source = "mcr.microsoft.com/${{full}}" 
             $target = "ccr.ccs.tencentyun.com/ye4241/" + ("$(full)" -replace "/",".")
             docker pull $source
