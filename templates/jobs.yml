@@ -4,7 +4,7 @@ parameters:
 
 jobs:
 - ${{each tag in parameters.tags}}:
-  - job: ${{tag}}
+  - job: _${{tag}}
     pool:
       vmImage: "ubuntu-latest"
     timeoutInMinutes: 360
