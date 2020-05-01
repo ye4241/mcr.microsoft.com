@@ -1,35 +1,15 @@
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - mssql/server.yml
+trigger: none
 
-pool:
-  vmImage: "ubuntu-latest"
-
-variables:
-  tag: "mssql/server:2017-latest"
-
-steps:
-  - task: Docker@2
-    inputs:
-      containerRegistry: "tencentyun"
-      command: "login"
-  - task: PowerShell@2
-    timeoutInMinutes: 360
-    inputs:
-      targetType: "inline"
-      script: |
-        $source = "mcr.microsoft.com/$(tag)" 
-        $target = "ccr.ccs.tencentyun.com/ye4241/" + ("$(tag)" -replace "/",".")
-
-        echo pull from $source
-        docker pull $source
-
-        echo tag to $target
-        docker tag $source $target
-
-        echo push to $target
-        docker push $target
+jobs:
+  - template: ../templates/jobs.yml
+    parameters:
+      path: "mssql/server"
+      tags:
+        - key: "2017"
+          value: "2017-latest"
+        - key: "2019"
+          value: "2019-latest"
+        - key: "2017_CU20"
+          value: "2017-CU20-ubuntu-16.04"
+        - key: "2019_CU4"
+          value: "2019-CU4-ubuntu-16.04"
