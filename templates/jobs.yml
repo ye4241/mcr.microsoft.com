@@ -4,7 +4,7 @@ parameters:
 
 jobs:
 - ${{each tag in parameters.tags}}:
-  - job: "sync ${{tag}}"
+  - job: "sync_${{tag.key}}"
     pool:
       vmImage: "ubuntu-latest"
     timeoutInMinutes: 360
@@ -17,7 +17,7 @@ jobs:
         inputs:
           targetType: "inline"
           script: |
-            $full = ${{parameters.path}} + ":" + ${{tag}}
+            $full = ${{parameters.path}} + ":" + ${{tag.value}}
             $source = "mcr.microsoft.com/$full" 
             $target = "ccr.ccs.tencentyun.com/ye4241/" + ("$full" -replace "/",".")
             docker pull $source
