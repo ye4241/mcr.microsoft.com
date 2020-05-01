@@ -6,30 +6,12 @@ trigger:
     include:
       - dotnet/core/runtime.yml
 
-pool:
-  vmImage: "ubuntu-latest"
-
 variables:
-  tag: "dotnet/core/runtime:latest"
+  path: "dotnet/core/runtime"
+  tags: [latest", "3.1", "2.1", "5.0"]
 
-steps:
-  - task: Docker@2
-    inputs:
-      containerRegistry: "tencentyun"
-      command: "login"
-  - task: PowerShell@2
-    timeoutInMinutes: 360
-    inputs:
-      targetType: "inline"
-      script: |
-        $source = "mcr.microsoft.com/$(tag)" 
-        $target = "ccr.ccs.tencentyun.com/ye4241/" + ("$(tag)" -replace "/",".")
-
-        echo pull from $source
-        docker pull $source
-
-        echo tag to $target
-        docker tag $source $target
-
-        echo push to $target
-        docker push $target
+jobs:
+  - template: ../../templates/jobs.yml
+    parameters:
+      path: $(path)
+      tags: $(tags)
