@@ -4,7 +4,7 @@ parameters:
 
 jobs:
 - ${{each tag in parameters.tags}}:
-  - job: _${{tag}}
+  - job: "sync ${{tag}}"
     pool:
       vmImage: "ubuntu-latest"
     timeoutInMinutes: 360
